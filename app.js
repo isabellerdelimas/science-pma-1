@@ -279,6 +279,24 @@ function shuffleList(items) {
   return copy;
 }
 
+function varyAnswerPosition(question, index) {
+  const correctPositions = [0, 2, 3, 1];
+  const correctIndex = correctPositions[index % correctPositions.length];
+  const choices = Array(question.choices.length);
+  const distractors = question.choices.filter((choice) => choice !== question.answer);
+  choices[correctIndex] = question.answer;
+
+  let distractorIndex = 0;
+  for (let choiceIndex = 0; choiceIndex < choices.length; choiceIndex += 1) {
+    if (!choices[choiceIndex]) {
+      choices[choiceIndex] = distractors[distractorIndex];
+      distractorIndex += 1;
+    }
+  }
+
+  return choices;
+}
+
 function setScreen(screen) {
   [startScreen, quizScreen, resultsScreen].forEach((item) => item.classList.remove("active"));
   screen.classList.add("active");
@@ -300,7 +318,7 @@ function buildQuestionSet(shouldShuffle) {
     const question = sourceQuestions[index % sourceQuestions.length];
     return {
       ...question,
-      choices: shouldShuffle || index >= sourceQuestions.length ? shuffleList(question.choices) : [...question.choices]
+      choices: shouldShuffle ? shuffleList(question.choices) : varyAnswerPosition(question, index)
     };
   });
 }
