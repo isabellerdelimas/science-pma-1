@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Science PMA Practice Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="test-card" aria-labelledby="app-title">
+        <header class="exam-header">
+          <div>
+            <p class="eyebrow">Science PMA 1</p>
+            <h1 id="app-title">Practice Test</h1>
+          </div>
+          <div class="exam-meta" aria-label="Test status">
+            <span id="score-pill">Not submitted</span>
+            <span id="progress-pill">0 / 0</span>
+          </div>
+        </header>
+
+        <section id="start-screen" class="screen active">
+          <div class="intro-grid">
+            <div class="intro-copy">
+              <h2>Choose the best answer for each question.</h2>
+              <p>
+                This practice test covers scientific experiments, data displays,
+                forms of energy, temperature, thermal energy, and heat transfer.
+              </p>
+              <div class="question-count-panel">
+                <label for="question-count">Number of questions</label>
+                <div class="question-count-control">
+                  <input id="question-count" type="number" min="1" max="200" value="10" />
+                  <span id="question-count-help">up to 200 questions</span>
+                </div>
+              </div>
+              <div class="start-actions">
+                <button id="start-btn" class="primary-btn" type="button">Start Test</button>
+                <button id="shuffle-btn" class="secondary-btn" type="button">Shuffle Questions</button>
+              </div>
+            </div>
+            <div class="topic-panel" aria-label="Test topics">
+              <div class="topic-row">
+                <span class="topic-mark experiment-mark"></span>
+                <span>Scientific experiments</span>
+              </div>
+              <div class="topic-row">
+                <span class="topic-mark graph-mark"></span>
+                <span>Tables, graphs, and conclusions</span>
+              </div>
+              <div class="topic-row">
+                <span class="topic-mark energy-mark"></span>
+                <span>Energy transformations</span>
+              </div>
+              <div class="topic-row">
+                <span class="topic-mark heat-mark"></span>
+                <span>Thermal energy and heat transfer</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="quiz-screen" class="screen" aria-live="polite">
+          <div class="question-topline">
+            <div>
+              <p id="topic-label" class="eyebrow"></p>
+              <h2 id="question-text"></h2>
+            </div>
+            <button id="flag-btn" class="icon-btn" type="button" aria-pressed="false" title="Flag question">
+              <span aria-hidden="true">?</span>
+              <span class="sr-only">Flag question</span>
+            </button>
+          </div>
+
+          <button id="example-btn" class="example-btn" type="button">Example</button>
+          <div id="example-box" class="example-box hidden"></div>
+          <div id="answers" class="answers" role="radiogroup" aria-label="Answer choices"></div>
+
+          <nav class="test-nav" aria-label="Question navigation">
+            <button id="prev-btn" class="secondary-btn" type="button">Previous</button>
+            <div class="question-dots" id="question-dots" aria-label="Question list"></div>
+            <button id="next-btn" class="primary-btn" type="button">Next</button>
+          </nav>
+        </section>
+
+        <section id="results-screen" class="screen">
+          <div class="results-summary">
+            <p class="eyebrow">Submitted</p>
+            <h2 id="results-title"></h2>
+            <p id="results-message"></p>
+          </div>
+          <div class="result-actions">
+            <button id="review-btn" class="primary-btn" type="button">Review Answers</button>
+            <button id="retry-btn" class="secondary-btn" type="button">Retake Test</button>
+          </div>
+          <div id="review-list" class="review-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
